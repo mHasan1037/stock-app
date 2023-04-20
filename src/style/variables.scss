@@ -1,0 +1,20 @@
+//fonts
+$robotoFont: 'Roboto', sans-serif;
+
+//size
+$desktopSize: 1400px;
+
+//display flex justify between
+@mixin fJustifyBetween($flex-dir) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: $flex-dir;
+}
+
+//responsive under 1400px
+@mixin responsive-padding($max-width, $padding){
+    @media(max-width: $max-width){
+        padding: $padding;
+    }
+}
