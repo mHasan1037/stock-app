@@ -5,16 +5,64 @@ $robotoFont: 'Roboto', sans-serif;
 $desktopSize: 1400px;
 
 //display flex justify between
-@mixin fJustifyBetween($flex-dir) {
+@mixin displayFlex($flex-dir:row, $justifyCont:center, $alignItem:center) {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    align-items: $alignItem;
+    justify-content: $justifyCont;
     flex-direction: $flex-dir;
 }
 
 //responsive under 1400px
 @mixin responsive-padding($max-width, $padding){
     @media(max-width: $max-width){
-        padding: $padding;
+        padding: 0 $padding;
     }
 }
+
+
+//break points map
+$breakpoints: (
+    "xs": "max-width: 575.98px",
+    "sm": "(min-width: 576px) and (max-width: 767.98px)",
+    "md": "(min-width: 768px) and (max-width: 991.98px)",
+    "lg": "(min-width: 992px) and (max-width: 1199.98px)",
+    "xl": "(min-width: 1200px) and (max-width: 1399.98px)",
+    "xxl": "min-width: 1400px"
+);
+
+@mixin breakpoint($value){
+    $my-map: map-get($breakpoints, $value);
+
+    @if $my-map{
+        @media (#{$my-map}){
+            @content;
+        }
+    }
+};
+
+
+
+
+
+
+@mixin button-styles($bg-color, $text-color) {
+    background-color: $bg-color;
+    color: $text-color;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  // Use the mixin on a button
+.button-one {
+    @include button-styles(#007bff, #fff);
+  }
+  
+  // Use the same mixin on another button
+.button-two {
+    @include button-styles(#6c757d, #fff);
+  }
+  
+
+
+

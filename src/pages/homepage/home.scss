@@ -1,0 +1,106 @@
+@import '../../style/variables.scss';
+@import '../../style/colors.scss';
+
+.homeContainer{
+    width: 100%;
+    background: radial-gradient(circle at center, #061233, #061130 20%, #000);
+    font-family: $robotoFont;
+
+    .hero-section{
+        min-height: 80vh;
+        width: $desktopSize;
+        margin: 0 auto;
+        color: $white;
+        flex-wrap: wrap;
+        @include displayFlex();
+
+        @include breakpoint(xl){
+            padding: 0 20px;
+        }
+        @include breakpoint(lg){
+            padding: 0 20px;
+        }
+        @include breakpoint(md){
+            padding: 0 20px;
+        }
+        @include breakpoint(sm){
+            padding: 0 20px;
+        }
+        @include breakpoint(xs){
+            padding: 0 20px;
+        }
+
+        aside{
+            flex: 1;
+
+            h1{
+                font-size: 5rem;
+                font-weight: normal;
+                .stockWord{
+                    color: $greenTwo;
+                } 
+            }
+            h3{
+               font-size: 2rem;
+               margin-bottom: 10px; 
+               font-weight: normal;
+            }
+            p{
+                max-width: 550px;
+                margin: 20px 0;
+            }
+            .heroSearch{
+                margin-top: 40px;
+
+                input{
+                    border: none;
+                    background-color: transparent;
+                    border-bottom: 2px solid #1B3887;
+                    border-left: 2px solid transparent;
+                    border-top: 2px solid transparent;
+                    border-right: 2px solid transparent;
+                    font-size: 18px;
+                    color: $white;
+                    padding: 10px 12px;
+                    border-radius: 0 0 0 5px;
+
+                    &:focus{
+                        outline: none;
+                        background-color: #010f35;
+                        border: 2px solid #1B3887;
+                        border-left: 2px solid transparent;
+                        border-radius: 5px;
+                    }
+                }
+                button{
+                   background-color: #010f35;
+                   color: white;
+                   border: none;
+                   font-size: 18px;
+                   padding: 10px 12px;
+                   border: 2px solid #1B3887;
+                   cursor: pointer;
+                   border-radius: 5px 0px 0px 5px;
+
+                   &:hover{
+                     border-radius: 5px;
+                     border-radius: 5px;
+                     background-color: #010f35;
+                   }
+                }
+            }
+        }
+
+        .heroImg{
+            flex: 1;
+            text-align: center;
+            height: 100%;
+            @include displayFlex();
+
+            img{
+                max-width: 100%;
+            }
+        }
+    }
+}
+

@@ -1,18 +1,44 @@
 @import '../style/variables.scss';
 @import '../style/colors.scss';
 
+
+
+@mixin link-style{
+    text-decoration: none;
+    color: $graywhite;
+    font-size: 18px;
+    font-weight: 500;
+    font-family: $robotoFont;
+
+    &:hover{
+        color: $white;
+    }
+}
+
+
+
 .navBar{
     background-color: $navBackground;
     width: 100%;
     height: 70px;
 
-    @include responsive-padding(1400px, 20px);
+    @include responsive-padding(1400px, 30px);
+    @include breakpoint(sm){
+        height: auto;  
+        padding: 20px;
+    }
+    @include breakpoint(xs){
+        height: auto;  
+        padding: 20px;
+    }
 
     nav{
         max-width: $desktopSize;
         height: 100%;
         margin: 0 auto;
-        @include fJustifyBetween(row);
+        position: relative;
+        @include displayFlex(row, space-between);
+
 
         .logo-box{
             display: flex;
@@ -26,6 +52,7 @@
             .nav-logo{
                 height: 35px;
             }
+ 
         }
 
         ul{
@@ -33,18 +60,18 @@
             gap: 20px;
             list-style-type: none;
 
+            @include breakpoint(sm){
+                display: none;
+            }
+            @include breakpoint(xs){
+                display: none;
+            }
+
+
             li{
 
                 a{
-                    text-decoration: none;
-                    color: $graywhite;
-                    font-size: 18px;
-                    font-weight: 500;
-                    font-family: $robotoFont;
-
-                    &:hover{
-                        color: $white;
-                    }
+                    @include link-style;
                 }
 
                 &:nth-last-child(n+1):nth-last-child(-n+2) a {
@@ -64,5 +91,62 @@
             }
 
         }
+
+        .menu-box{
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-right: 40px;
+
+            a{
+                @include link-style;
+            }
+        }
+
+        .burger-menu{
+            position: absolute;
+            right: 0;
+            color: $graywhite;
+            cursor: pointer;
+            font-size: 22px;
+            width: 30px;
+
+            &:hover{
+                color: $white;
+            }
+        }
+    }
+
+    nav.showNav{
+        flex-direction: column;
+
+        .logo-box{
+            margin-bottom: 25px;
+        }
+
+        ul{
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+
+            li{
+                &:nth-last-child(2){
+                    margin-top: 15px;
+                    margin-left: 0;
+                }
+            }
+        }
+        .menu-box{
+            display: none;
+        }
     }
 }
+
+
+
+
+
+
+
+
+
