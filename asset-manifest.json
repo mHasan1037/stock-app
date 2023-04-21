@@ -1,14 +1,15 @@
 {
   "files": {
-    "main.css": "/stock-app/static/css/main.40bd709b.css",
-    "main.js": "/stock-app/static/js/main.c59d9026.js",
+    "main.css": "/stock-app/static/css/main.b6a1b929.css",
+    "main.js": "/stock-app/static/js/main.d4fbb203.js",
     "static/media/logo.png": "/stock-app/static/media/logo.d3cad5692f2c8742c0ef.png",
+    "static/media/hero-phone.png": "/stock-app/static/media/hero-phone.2f341e6f8828dcd6f753.png",
     "index.html": "/stock-app/index.html",
-    "main.40bd709b.css.map": "/stock-app/static/css/main.40bd709b.css.map",
-    "main.c59d9026.js.map": "/stock-app/static/js/main.c59d9026.js.map"
+    "main.b6a1b929.css.map": "/stock-app/static/css/main.b6a1b929.css.map",
+    "main.d4fbb203.js.map": "/stock-app/static/js/main.d4fbb203.js.map"
   },
   "entrypoints": [
-    "static/css/main.40bd709b.css",
-    "static/js/main.c59d9026.js"
+    "static/css/main.b6a1b929.css",
+    "static/js/main.d4fbb203.js"
   ]
 }
