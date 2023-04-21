@@ -3,8 +3,8 @@
 
 .homeContainer{
     width: 100%;
-    background: radial-gradient(circle at center, #061233, #061130 20%, #000);
     font-family: $robotoFont;
+    background-color: $bgBlack;
 
     .hero-section{
         min-height: 80vh;
@@ -12,26 +12,40 @@
         margin: 0 auto;
         color: $white;
         flex-wrap: wrap;
+        background: radial-gradient(circle at center, #061233, #061130 20%, $bgBlack);
         @include displayFlex();
 
         @include breakpoint(xl){
             padding: 0 20px;
+            width: 100%;
         }
         @include breakpoint(lg){
             padding: 0 20px;
+            width: 100%;
+            min-height: 60vh;
         }
         @include breakpoint(md){
             padding: 0 20px;
+            width: 100%;
+            min-height: 50vh;
         }
         @include breakpoint(sm){
             padding: 0 20px;
+            min-height: 40vh;
         }
         @include breakpoint(xs){
             padding: 0 20px;
+            min-height: 40vh;
         }
 
         aside{
             flex: 1;
+            @include breakpoint(lg){
+                flex: 2;
+            }
+            @include breakpoint(md){
+                flex: 2;
+            }
 
             h1{
                 font-size: 5rem;
@@ -39,15 +53,33 @@
                 .stockWord{
                     color: $greenTwo;
                 } 
+
+                @include breakpoint(sm){
+                    font-size: 3rem;
+                }
+                @include breakpoint(xs){
+                    font-size: 2.5rem;
+                }
             }
             h3{
                font-size: 2rem;
                margin-bottom: 10px; 
                font-weight: normal;
+
+               @include breakpoint(sm){
+                font-size: 1.5rem;
+               }
+               @include breakpoint(xs){
+                font-size: 1.5rem;
+               }
             }
             p{
                 max-width: 550px;
                 margin: 20px 0;
+                @include breakpoint(xs){
+                    max-width: 90vw;
+                    word-wrap: break-word;
+                }
             }
             .heroSearch{
                 margin-top: 40px;
@@ -63,6 +95,17 @@
                     color: $white;
                     padding: 10px 12px;
                     border-radius: 0 0 0 5px;
+
+                    @include breakpoint(sm){
+                        font-size: 15px;
+                        padding: 6px 8px;
+                        border-width: 1px;
+                    }
+                    @include breakpoint(xs){
+                        font-size: 15px;
+                        padding: 6px 8px;
+                        border-width: 1px;
+                    }
 
                     &:focus{
                         outline: none;
@@ -82,6 +125,17 @@
                    cursor: pointer;
                    border-radius: 5px 0px 0px 5px;
 
+                   @include breakpoint(sm){
+                        font-size: 15px;
+                        padding: 6px 8px;
+                        border-width: 1px;
+                   }
+                   @include breakpoint(xs){
+                        font-size: 15px;
+                        padding: 6px 8px;
+                        border-width: 1px;
+                   }
+
                    &:hover{
                      border-radius: 5px;
                      border-radius: 5px;
@@ -96,6 +150,13 @@
             text-align: center;
             height: 100%;
             @include displayFlex();
+
+            @include breakpoint(sm){
+                display: none;
+            }
+            @include breakpoint(xs){
+                display: none;
+            }
 
             img{
                 max-width: 100%;
