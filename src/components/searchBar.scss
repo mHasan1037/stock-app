@@ -1,0 +1,59 @@
+.heroSearch{
+
+    input{
+        border: none;
+        background-color: transparent;
+        border-bottom: 2px solid #1B3887;
+        border-left: 2px solid transparent;
+        border-top: 2px solid transparent;
+        border-right: 2px solid transparent;
+        color: $white;
+        padding: 10px 12px;
+        border-radius: 0 0 0 5px;
+
+        @include breakpoint(sm){
+            font-size: 15px;
+            padding: 6px 8px;
+            border-width: 1px;
+        }
+        @include breakpoint(xs){
+            font-size: 15px;
+            padding: 6px 8px;
+            border-width: 1px;
+        }
+
+        &:focus{
+            outline: none;
+            background-color: #010f35;
+            border: 2px solid #1B3887;
+            border-left: 2px solid transparent;
+            border-radius: 5px;
+        }
+    }
+    button{
+       background-color: #010f35;
+       color: $white;
+       border: none;
+       padding: 10px 12px;
+       border: 2px solid #1B3887;
+       cursor: pointer;
+       border-radius: 5px 0px 0px 5px;
+
+       @include breakpoint(sm){
+            font-size: 15px;
+            padding: 6px 8px;
+            border-width: 1px;
+       }
+       @include breakpoint(xs){
+            font-size: 15px;
+            padding: 6px 8px;
+            border-width: 1px;
+       }
+
+       &:hover{
+         border-radius: 5px;
+         border-radius: 5px;
+         background-color: #010f35;
+       }
+    }
+}
