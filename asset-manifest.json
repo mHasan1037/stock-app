@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/stock-app/static/css/main.f0cad573.css",
-    "main.js": "/stock-app/static/js/main.0edcbaa9.js",
+    "main.css": "/stock-app/static/css/main.69288f71.css",
+    "main.js": "/stock-app/static/js/main.8ad43aaf.js",
     "static/media/logo.png": "/stock-app/static/media/logo.d3cad5692f2c8742c0ef.png",
     "static/media/Coca-Cola.png": "/stock-app/static/media/Coca-Cola.1f68039f6b61a5ac24f4.png",
     "static/media/meta.png": "/stock-app/static/media/meta.132c932681b90f7d6a12.png",
@@ -16,11 +16,11 @@
     "static/media/apple.png": "/stock-app/static/media/apple.6481e23e9f9d9f574cab.png",
     "static/media/amd.webp": "/stock-app/static/media/amd.548240a8b16d1363660a.webp",
     "index.html": "/stock-app/index.html",
-    "main.f0cad573.css.map": "/stock-app/static/css/main.f0cad573.css.map",
-    "main.0edcbaa9.js.map": "/stock-app/static/js/main.0edcbaa9.js.map"
+    "main.69288f71.css.map": "/stock-app/static/css/main.69288f71.css.map",
+    "main.8ad43aaf.js.map": "/stock-app/static/js/main.8ad43aaf.js.map"
   },
   "entrypoints": [
-    "static/css/main.f0cad573.css",
-    "static/js/main.0edcbaa9.js"
+    "static/css/main.69288f71.css",
+    "static/js/main.8ad43aaf.js"
   ]
 }
