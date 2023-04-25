@@ -6,14 +6,54 @@ import SearchBar from '../../components/SearchBar'
 
 
 const HomePage = () => {
-   const [companyTicket, setCompanyTicket] = useState([])
+   const [companyTicket, setCompanyTicket] = useState({})
 
    const handleData = async() =>{
       const response = await fetch(`https://api.twelvedata.com/time_series?symbol=AAPL,MSFT,TSLA,META,AMZN&interval=1day&apikey=fc8e2d7c7326415a8e316a8d6a6e853d`)
       const jsonData = await response.json()
   
-      setCompanyTicket(Object.keys(jsonData))
+      setCompanyTicket(jsonData)
    }
+
+   const stocksData = Object.entries(companyTicket).map(([key, value])=>{
+      const {open, close, datetime, high, low, volume} = value.values[0];
+
+      return{
+         key,
+         data: {
+            open,
+            close,
+            high,
+            low,
+            datetime,
+            volume 
+         }
+      }
+   })
+
+   const handleDetails = (key) =>{
+      console.log(key)
+   }
+
+   const tableRows = stocksData.map((stock, index) =>{
+      const {open, close, high, low, datetime, volume} = stock.data
+
+      return(
+         <tr key={index}>
+            <td>{index + 1}</td>
+            <td>{datetime}</td>
+            <td>{stock.key}</td>
+            <td>{open}</td>
+            <td>{close}</td>
+            <td>{high}</td>
+            <td>{low}</td>
+            <td>{volume}</td>
+            <td>{
+               parseFloat((open - close).toFixed(2))
+               }</td>
+            <td><button onClick={()=> handleDetails(stock.key)}>Details</button></td>
+         </tr>
+      )})
 
   return (
     <div className='homeContainer'>
@@ -68,22 +108,7 @@ const HomePage = () => {
                      </tr>
                  </thead>
                  <tbody>
-                     {
-                        companyTicket && companyTicket.map((ticket, idx) => (
-                           <tr key={idx}>
-                              <td>hello</td>
-                              <td>hello</td>
-                              <td>{ticket}</td>
-                              <td>hello</td>
-                              <td>hello</td>
-                              <td>hello</td>
-                              <td>hello</td>
-                              <td>hello</td>
-                              <td>hello</td>
-                              <td><button>Btn</button></td>
-                           </tr>
-                        ))
-                     }
+                        {tableRows}
                  </tbody>
               </table>
            </div>

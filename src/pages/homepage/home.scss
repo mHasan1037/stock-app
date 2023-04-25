@@ -278,7 +278,7 @@
                         }
                         @include breakpoint(xs){
                             font-weight: normal;
-                            font-size: 8px;
+                            font-size: 7px;
                         }
                     }
                     td{
@@ -288,17 +288,20 @@
                         }
                         @include breakpoint(xs){
                             font-weight: normal;
-                            font-size: 8px;
+                            font-size: 7px;
                         }
 
                         button{
+                            background-color: green;
+                            cursor: pointer;
+
                             @include breakpoint(sm){
                                 font-weight: normal;
                                 font-size: 10px;
                             }
                             @include breakpoint(xs){
                                 font-weight: normal;
-                                font-size: 8px;
+                                font-size: 7px;
                             }
                         }
                     }
