@@ -250,12 +250,27 @@
             }
             
         }
-
+    
         .top-stock-table{
             background-color: $navBackground;
+            position: relative;
             margin-top: 50px;
             border-radius: 5px;
             padding: 30px 50px;
+            
+            &::before{
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-image: url(../../images/stock-graph.webp);
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+                opacity: 0.03;
+            }
 
             @include breakpoint(sm){
                 padding: 20px 30px;
@@ -268,10 +283,11 @@
             table{
                 width: 100%;
                 text-align: center;
+                position: relative;
 
                 tr {
-                    
                     th{
+                        padding: 15px 0;
                         @include breakpoint(sm){
                             font-weight: normal;
                             font-size: 10px;
@@ -282,6 +298,7 @@
                         }
                     }
                     td{
+                        padding: 20px 0;
                         @include breakpoint(sm){
                             font-weight: normal;
                             font-size: 10px;
@@ -291,9 +308,18 @@
                             font-size: 7px;
                         }
 
-                        button{
-                            background-color: green;
-                            cursor: pointer;
+                        .stock-details-btn{
+                            background-color: $white;
+                            color: $bgBlack;
+                            padding: 5px 10px;
+                            border-radius: 5px;
+                            border: none;
+                            
+                            &:hover{
+                                cursor: pointer;
+                                background-color: #0f225c;
+                                color: $white;
+                            }
 
                             @include breakpoint(sm){
                                 font-weight: normal;
@@ -305,6 +331,86 @@
                             }
                         }
                     }
+                }
+            }
+        }
+    }
+
+
+    //Timeline starts from here.....
+
+    .home-time-line{
+        color: $white;
+        width: $desktopSize;
+        margin: 0 auto;
+        padding: 50px 0;
+
+        p{
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        h1{
+            text-align: center;
+        }
+
+        .timeline-container{
+            margin-top: 70px;  
+            position: relative;  
+            
+            &::after{
+                content: '';
+                position: absolute;
+                width: 4px;
+                height: 100%;
+                background: #fff;
+                top: 0;
+                left: 50%;
+                margin-left: -3px;
+            
+            }
+
+            .timeline-holder{
+                width: 50%;
+                position: relative;
+                margin: 25px 0;
+
+                &::after{
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    width: 0;
+                    height: 0;
+                    border-top: 16px solid transparent;
+                    border-right: 16px solid $navBackground;
+                    border-bottom: 16px solid transparent;
+                    margin-left: 34px;
+                }
+
+                .timeline-box{
+                    background-color: $navBackground;
+                    border-radius: 6px;
+                    padding: 30px 30px 10px; 
+                    
+                    p{
+                        text-align: start;
+                    }
+                }
+            }
+    
+            .left-box{
+                left: 0;
+
+                .timeline-box{
+                    margin-right: 50px;
+                }
+            }
+    
+            .right-box{
+                left: 50%;
+
+                .timeline-box{
+                    margin-left: 50px;
                 }
             }
         }

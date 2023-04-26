@@ -12,14 +12,16 @@
         border-radius: 0 0 0 5px;
 
         @include breakpoint(sm){
-            font-size: 15px;
+            font-size: 10px;
             padding: 6px 8px;
             border-width: 1px;
+            width: 60px;
         }
         @include breakpoint(xs){
-            font-size: 15px;
+            font-size: 10px;
             padding: 6px 8px;
             border-width: 1px;
+            width: 100px;
         }
 
         &:focus{
@@ -40,12 +42,12 @@
        border-radius: 5px 0px 0px 5px;
 
        @include breakpoint(sm){
-            font-size: 15px;
+            font-size: 10px;
             padding: 6px 8px;
             border-width: 1px;
        }
        @include breakpoint(xs){
-            font-size: 15px;
+            font-size: 10px;
             padding: 6px 8px;
             border-width: 1px;
        }
