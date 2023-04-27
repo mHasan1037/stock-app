@@ -20,6 +20,36 @@ $desktopSize: 1400px;
 }
 
 
+//animation of timeline
+@keyframes width-grow{
+    0%{
+        height: 0;
+    }
+    100%{
+        height: 100%;
+    }
+}
+
+@keyframes visibility{
+    0%{
+       opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+@mixin timeline{
+    animation: width-grow 2s ease-in-out both;
+    transition: height  0.5s ease-in-out;
+}
+
+@mixin visibility{
+    animation: visibility 2s ease-in-out;
+    transition: opacity  0.5s ease-in-out;
+}
+
+
 //break points map
 $breakpoints: (
     "xs": "max-width: 575.98px",

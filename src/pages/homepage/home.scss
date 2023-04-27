@@ -345,6 +345,28 @@
         margin: 0 auto;
         padding: 50px 0;
 
+
+        @include breakpoint(xl){
+            width: calc(100% - 20px);
+            margin: 0 auto;
+        }
+        @include breakpoint(lg){
+            width: 90%;
+            width: calc(100% - 20px);
+        }
+        @include breakpoint(md){
+            width: 90%;
+            width: calc(100% - 20px);
+        }
+        @include breakpoint(sm){
+            width: 90%;
+            width: calc(100% - 20px);
+        }
+        @include breakpoint(xs){
+            width: 90%;
+            width: calc(100% - 20px);
+        }
+
         p{
             text-align: center;
             margin-bottom: 15px;
@@ -366,13 +388,32 @@
                 top: 0;
                 left: 50%;
                 margin-left: -3px;
-            
+
+                @include breakpoint(sm){
+                    left: 3%;
+                }
+                @include breakpoint(xs){
+                    left: 3%;
+                };
+
+                .timeline-anim & {
+                    @include timeline()
+                }      
             }
 
             .timeline-holder{
                 width: 50%;
                 position: relative;
-                margin: 25px 0;
+                margin: 65px 0;
+
+                @include breakpoint(sm){
+                    width: 100%;
+                    margin-left: 9%;
+                }
+                @include breakpoint(xs){
+                    width: 100%;
+                    margin-left: 10%;
+                }
 
                 &::after{
                     content: '';
@@ -381,19 +422,125 @@
                     transform: translateY(-50%);
                     width: 0;
                     height: 0;
+
+                    @include breakpoint(lg){
+                        top: 45%;
+                    }
+                    @include breakpoint(md){
+                        top: 40%;
+                    }
+                }
+
+                &:nth-child(even)::after{
                     border-top: 16px solid transparent;
                     border-right: 16px solid $navBackground;
                     border-bottom: 16px solid transparent;
                     margin-left: 34px;
+
+                    @include breakpoint(sm){
+                        margin-left: -15px;
+                    }
+                    @include breakpoint(xs){
+                        margin-left: -15px;
+                    }
+                }
+
+                &:nth-child(odd)::after{           
+                    right: 0;
+                    border-top: 16px solid transparent;
+                    border-left: 16px solid $navBackground;
+                    border-bottom: 16px solid transparent; 
+                    margin-right: 34px;
+
+                    @include breakpoint(sm){
+                        right: auto;
+                        left: -15px;
+                        border-left: 0;
+                        border-right: 16px solid $navBackground;
+                    }
+
+                    @include breakpoint(xs){
+                        right: auto;
+                        left: -15px;
+                        border-left: 0;
+                        border-right: 16px solid $navBackground;
+                    }
+                }
+
+                .timeline-img-box{
+                    position: absolute;
+                    top: 52px;
+                    background-color: $white;
+                    border-radius: 50%;
+                    height: 50px;
+                    width: 50px;
+                    display: grid;
+                    place-items: center;
+                    z-index: 10;
+                    left: -25px;                                  
+                    @include visibility;
+
+
+                    @include breakpoint(sm){
+                        left: -55px;
+                        top: 35px;
+                        height: 40px;
+                        width: 40px;
+                    }
+                    @include breakpoint(xs){
+                        left: -45px;
+                        top: 50px;
+                        height: 40px;
+                        width: 40px;
+                    }
+
+                    img{
+                        width: 30px; 
+                        @include breakpoint(sm){
+                            width: 20px; 
+                        }
+                        @include breakpoint(xs){
+                            width: 20px; 
+                        } 
+                    }
+                }
+
+                .odd{
+                    left: auto;
+                    right: -25px;
+
+                    @include breakpoint(sm){
+                        left: -55px;
+                    }
+                    @include breakpoint(xs){
+                        left: -45px;
+                        top: 50px;
+                    }
                 }
 
                 .timeline-box{
                     background-color: $navBackground;
                     border-radius: 6px;
                     padding: 30px 30px 10px; 
+
+                    @include breakpoint(sm){
+                        padding: 10px 10px 10px; 
+                    }
+                    @include breakpoint(xs){
+                        padding: 15px 15px 5px;
+                    }
                     
                     p{
                         text-align: start;
+
+                        @include breakpoint(sm){
+                            margin-top: 5px;
+                            font-size: 12px; 
+                        }
+                        @include breakpoint(xs){
+                            margin-top: 5px;
+                            font-size: 12px; 
+                        }
                     }
                 }
             }
@@ -403,14 +550,39 @@
 
                 .timeline-box{
                     margin-right: 50px;
+
+                    @include breakpoint(sm){
+                        margin-right: 0;
+                        width: 90%;
+                    }
+                    @include breakpoint(xs){
+                        margin-right: 0;
+                        width: 90%;
+                    }
                 }
             }
     
             .right-box{
                 left: 50%;
 
+                @include breakpoint(sm){
+                    left: 0;
+                    width: 90%;
+                }
+                @include breakpoint(xs){
+                    left: 0;
+                    width: 90%;
+                }
+
                 .timeline-box{
                     margin-left: 50px;
+
+                    @include breakpoint(sm){
+                        margin-left: 0;
+                    }
+                    @include breakpoint(xs){
+                        margin-left: 0;
+                    }
                 }
             }
         }
