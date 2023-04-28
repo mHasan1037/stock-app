@@ -388,17 +388,14 @@
                 top: 0;
                 left: 50%;
                 margin-left: -3px;
+                @include timeline();
 
                 @include breakpoint(sm){
                     left: 3%;
                 }
                 @include breakpoint(xs){
                     left: 3%;
-                };
-
-                .timeline-anim & {
-                    @include timeline()
-                }      
+                };    
             }
 
             .timeline-holder{
@@ -542,6 +539,10 @@
                             font-size: 12px; 
                         }
                     }
+                    h3{
+                       color: $greenTwo;
+                       margin-bottom: 10px;
+                    }
                 }
             }
     
@@ -582,6 +583,215 @@
                     }
                     @include breakpoint(xs){
                         margin-left: 0;
+                    }
+                }
+            }
+        } 
+    }
+
+    //Counter up starts from here....
+
+    .number-section{
+        width: $desktopSize;
+        margin: 100px auto;
+        padding: 50px 0;
+        color: $white;
+        // background-image: url('../../images/bitcoin-user.png');
+        // background-position: center;
+        // background-repeat: no-repeat;
+        // background-size: cover;
+
+
+        @include breakpoint(xl){
+            padding: 50px 20px;
+            width: 100%;
+        }
+        @include breakpoint(lg){
+            padding: 50px 20px;
+            width: 100%;
+        }
+        @include breakpoint(md){
+            padding: 50px 20px;
+            width: 100%;
+        }
+        @include breakpoint(sm){
+            padding: 40px 20px;
+            width: 100%;
+        }
+        @include breakpoint(xs){
+            padding: 30px 20px;
+            width: 100%;
+        }
+
+        .num-countup{
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            text-align: center;
+            margin-top: 50px;
+
+            div{
+                margin: 0 auto;
+                h1{
+                    font-size: 40px;
+                    margin-bottom: 10px;
+                    color: $greenTwo;
+                }
+            }
+        }
+    }
+
+
+    //team slider starts from here...
+
+    .team-container{
+        width: $desktopSize;
+        margin: 180px auto 100px;
+        color: $white;
+
+        @include breakpoint(xl){
+            padding: 0 20px;
+            width: 100%;
+        }
+        @include breakpoint(lg){
+            padding: 0 20px;
+            width: 100%;
+        }
+        @include breakpoint(md){
+            padding:0 20px;
+            width: 100%;
+        }
+        @include breakpoint(sm){
+            padding: 0 20px;
+            width: 100%;
+        }
+        @include breakpoint(xs){
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        .team-slide{
+
+            .team-img-box{        
+                position: relative;
+                width: 200px;
+                height: 200px;
+                border-radius: 50%;
+                overflow: hidden;
+                text-align: center;
+                margin: 0 auto;
+
+                img{
+                    width: 200px;
+                    height: 200px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+
+                .team-hidden-Intro{
+                    position: absolute;
+                    top: 110%;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    text-align: center;
+                    width: 100%;
+                    height: 100%;
+                    padding-top: 5px;
+                    background-color: rgba(74, 167, 51, 0.5);
+                    z-index: 100;
+                    transition: 0.3s ease-in-out;
+
+                    p{
+                        font-size: 12px;
+                        margin-top: 5px;
+                    }
+                }
+            }
+
+            .team-desc{
+                text-align: center;
+                margin-top: 20px;
+                height: 30px;
+                overflow: hidden;
+                position: relative;
+
+                .team-player-name{
+                    transition: transform 0.3s ease-in-out;
+                    position: absolute;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    top: 0;
+                    transition: top 0.3s ease-in;
+                }
+    
+                .team-social{
+                    position: absolute;
+                    top: 50px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    transition: top 0.3s ease-in;
+
+                    & > * {
+                        margin: 0 5px;
+                        cursor: pointer;
+                        background-color: $green;
+                        width: 25px;
+                        height: 25px;
+                        border-radius: 50%;
+                        font-size: 12px;
+                        padding: 5px;
+
+                        &:hover{
+                            background-color: orange;
+                        }
+                    }
+                }
+            }
+
+            &:hover{
+                .team-hidden-Intro{
+                    display: block;
+                    top: 70%;
+                }
+
+                .team-player-name{
+                    top: -50px;
+                }
+    
+                .team-social{
+                    top: 0;
+                }
+            }
+
+
+        }
+    }
+
+    .faq-container{
+        width: $desktopSize;
+        margin: 180px auto 0px;
+        color: $white;
+
+        .question-box{
+            .questions{
+                background-color: $navBackground;
+                margin: 15px 0;
+                border-radius: 5px;
+                padding: 25px 30px;
+
+                .question{
+                    display: flex;
+                    justify-content: space-between;
+
+                    span{
+                        background-color: $green;
+                        display: grid;
+                        place-items: center;
+                        width: 25px;
+                        height: 25px;
+                        border-radius: 50%;
+                        cursor: pointer;
                     }
                 }
             }

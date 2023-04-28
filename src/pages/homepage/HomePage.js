@@ -1,43 +1,112 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { useNavigate } from 'react-router'
+import {FiArrowUpRight, FiArrowDownRight} from 'react-icons/fi'
+
+import CountUp from 'react-countup'
+import ScrollTrigger from 'react-scroll-trigger'
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 import './home.scss'
-import heroImg from '../../images/hero-phone.png'
+
 import images from './importLogos'
 import SearchBar from '../../components/SearchBar'
-import {FiArrowUpRight, FiArrowDownRight} from 'react-icons/fi'
-import { useNavigate } from 'react-router'
+import {FaFacebookF} from 'react-icons/fa'
+import {AiOutlineTwitter, AiOutlineInstagram, AiOutlinePlus, AiOutlineMinus} from 'react-icons/ai'
+
 import Intel from '../../images/intel.png'
 import Tesla from '../../images/Tesla.png'
 import Meta from '../../images/meta.png'
 import Microsoft from '../../images/microsoft.png'
 import Apple from '../../images/apple.png'
+import heroImg from '../../images/hero-phone.png'
+import manOne from '../../images/man-1.avif'
+import manTwo from '../../images/man-2.avif'
+import manThree from '../../images/man-3.avif'
+import manFour from '../../images/man-4.avif'
+import manFive from '../../images/man-5.avif'
+import manSix from '../../images/man-6.avif'
+import manSeven from '../../images/man-7.avif'
+import manEight from '../../images/man-8.avif'
+
+const team = [
+   {
+      name : 'William Noah',
+      designation: 'Front end developer',
+      pic: manOne
+  },
+  {
+     name : 'Bob Marley',
+     designation: 'Back end developer',
+     pic: manTwo
+  },
+  {
+      name : 'Nathan Todd',
+      designation: 'Ui/Ux designer',
+      pic: manThree
+   },
+   {
+      name : 'Wilson Becker',
+      designation: 'Graphics designer',
+      pic: manFour
+   },
+   {
+      name : 'Alfredo White',
+      designation: 'Photographer',
+      pic: manFive
+   },
+   {
+      name : 'Dallas Barker',
+      designation: 'Art Director',
+      pic: manSix
+   },
+   {
+      name : "Oakley O'Connell",
+      designation: 'CTO',
+      pic: manSeven
+  },
+  {
+      name : 'Joe Copper',
+      designation: 'CEO',
+      pic: manEight
+   }
+]
+
+const faqs = [
+   {
+      question: 'Have you bought stock before?',
+      answer: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+   },
+   {
+      question: 'How do I buy stock?',
+      answer: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+   },
+   {
+      question: 'Best way to find stock?',
+      answer: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+   },
+   {
+      question: 'How to study current market?',
+      answer: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+   },
+   {
+      question: 'How do I widthdrow money from market?',
+      answer: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+   },
+]
+
+
 
 
 const HomePage = () => {
    const [companyTicket, setCompanyTicket] = useState({})
-   const [isTimelineActive, setIsTimelineActive] = useState(false)
-
-   const timelineRef = useRef(null)
+   const [counter, setCounter] = useState(false)
+   const [faqVisible, setFaqVisible] = useState(false)
    const navigate = useNavigate()
 
-   useEffect(()=>{
-       const timelineObserver = new IntersectionObserver(entries =>{
-         entries.forEach(entry =>{
-            if(entry.isIntersecting){
-               setIsTimelineActive(true)
-            }else{
-               setIsTimelineActive(false)
-            }
-         })
-       }, {rootMargin: '-70px 0px'})
-
-       timelineObserver.observe(timelineRef.current)
-       return () => timelineObserver.disconnect()
-   }, [])
 
    const handleData = async() =>{
       const response = await fetch(`https://api.twelvedata.com/time_series?symbol=AAPL,MSFT,TSLA,META,AMZN&interval=1day&apikey=fc8e2d7c7326415a8e316a8d6a6e853d`)
-      const jsonData = await response.json()
-  
+      const jsonData = await response.json() 
       setCompanyTicket(jsonData)
    }
 
@@ -89,6 +158,27 @@ const HomePage = () => {
             <td><button className='stock-details-btn' onClick={()=> handleDetails(stock.key)}>Details</button></td>
          </tr>
       )})
+
+      // code for multi-carousel...
+      const responsive = {
+         superLargeDesktop: {
+           // the naming can be any, depends on you.
+           breakpoint: { max: 4000, min: 3000 },
+           items: 5
+         },
+         desktop: {
+           breakpoint: { max: 3000, min: 1024 },
+           items: 4
+         },
+         tablet: {
+           breakpoint: { max: 1024, min: 464 },
+           items: 2
+         },
+         mobile: {
+           breakpoint: { max: 464, min: 0 },
+           items: 1
+         }
+       };
 
   return (
     <div className='homeContainer'>
@@ -164,7 +254,7 @@ const HomePage = () => {
            <p>ROADMAP</p>
            <h1>How it's started</h1>
 
-           <div className={`timeline-container ${isTimelineActive ? 'timeline-anim' : ''}`} ref={timelineRef}>
+           <div className={`timeline-container`}>
                <div className='timeline-holder left-box'>
                   <div className='timeline-img-box odd'>
                      <img src={Intel} />
@@ -220,6 +310,105 @@ const HomePage = () => {
                   </div>
                </div>
            </div>
+        </section>
+
+        {
+          // Number section starts from here...
+        }
+
+        <section className='number-section'>
+            <div className='num-header'>
+               <p>OUR NUMBERS</p>
+               <h1>The Numbers Don't Lie</h1>
+               <p>We offer better rates than our competitor on your favorite assets like BTC, ETH, USDC, and USDT</p>
+            </div>
+ 
+            <ScrollTrigger onEnter={()=> setCounter(true)} onExit={()=> setCounter(false)}>
+               {counter && (
+                  <div className='num-countup' style={{color: 'white'}}>
+                     <div>
+                        <h1>$<CountUp start={0} end={20} duration={3} delay={0} />B+</h1>
+                        <p>In community assets</p>
+                     </div>
+                     <div>
+                        <h1>1M+</h1>
+                        <p>Happy Crypyic users</p>
+                     </div>
+                     <div>
+                        <h1><CountUp start={0} end={484} duration={2} delay={0} />M+</h1>
+                        <p>Yield paid in last 12 months</p>
+                     </div>
+                     <div>
+                        <h1><CountUp start={0} end={109} duration={2} delay={0} />k+</h1>
+                        <p>Community BTC</p>
+                     </div>
+                  </div>
+               )}
+            </ScrollTrigger>
+        </section>
+
+        {
+         // Team slider starts from here...
+        }
+
+        <section className='team-container'>
+            <div className='num-header'>
+               <p>MEET OUR TEAM</p>
+               <h1>Our Mativated Team</h1>
+            </div>
+            <Carousel 
+               responsive={responsive} 
+               className='team-slider'
+               infinite={true}
+               autoPlay={true}
+               autoPlaySpeed={3000}
+               keyBoardControl={true}
+            >
+                 {
+                     team.map((player, idx) =>{
+                        const {pic, name, designation} = player
+                        return (
+                        <div className='team-slide'>
+                           <div className="team-img-box">
+                              <img src={pic} width="50px"/>
+                              <div className="team-hidden-Intro">
+                                 <h4>{name}</h4>
+                                 <p>{designation}</p>
+                              </div>
+                           </div>
+                           <div className='team-desc'>
+                              <h4 className='team-player-name'>{name}</h4>
+                              <div className='team-social'>
+                                 <AiOutlineInstagram />
+                                 <AiOutlineTwitter />
+                                 <FaFacebookF />
+                              </div>
+                           </div>
+                        </div>
+                        )
+                     })
+                  }
+            </Carousel>
+        </section>
+
+        {
+         //FAQ section starts from here...
+        }
+
+        <section className='faq-container'>
+            <p>FAQ</p>
+            <h1>YOU HAVE QUESTIONS</h1>
+            <div className='question-box'>
+               {faqs.map((faq, idx) =>(
+                  <div className='questions'>
+                     <div className='question'>
+                        <h3>{faq.question}</h3>
+                        <span onClick={()=> setFaqVisible(!faqVisible)}>{faqVisible ? <AiOutlineMinus /> : <AiOutlinePlus />}</span>
+                     </div>
+                     <p>{faq.answer}</p>
+                  </div>
+               ))}
+            </div>
         </section>
 
     </div>

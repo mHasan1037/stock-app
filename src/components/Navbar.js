@@ -16,6 +16,23 @@ const menuItems = [
 const Navbar = () => {
   const isMobile = useMobileBreakPoint(768);
   const [showNav, setShowNav] = useState(false)
+  const [isSticky, setIsStickey] = useState(false)
+
+  useEffect(()=>{
+     function handleScroll(){
+        if(window.pageYOffset > window.innerHeight * 0.3){
+          setIsStickey(true)
+        }else{
+          setIsStickey(false)
+        }
+     }
+
+     window.addEventListener('scroll', handleScroll)
+
+     return()=>{
+       window.removeEventListener('scroll', handleScroll)
+     }
+  }, [])
 
   const handleBurgerClick = () =>{
      setShowNav(!showNav)
@@ -32,7 +49,7 @@ const Navbar = () => {
 
 
   return (
-    <div className='navBar'>
+    <div className={`navBar ${isSticky ? 'sticky' : ''}`}>
         <nav className={showNav ? 'showNav' : ''}>
             <Link to="/" onClick={()=> showNav ? setShowNav(false) : setShowNav(null)} className='logo-box'><img className='nav-logo' src={Logo} />FinInfo</Link>
             <ul>
