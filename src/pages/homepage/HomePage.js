@@ -27,6 +27,10 @@ import manFive from '../../images/man-5.avif'
 import manSix from '../../images/man-6.avif'
 import manSeven from '../../images/man-7.avif'
 import manEight from '../../images/man-8.avif'
+import phoneImg from '../../images/first-mob.webp'
+import playStore from '../../images/google-play.png'
+import appStore from '../../images/app-store.png'
+import Footer from '../../components/Footer'
 
 const team = [
    {
@@ -100,8 +104,12 @@ const faqs = [
 const HomePage = () => {
    const [companyTicket, setCompanyTicket] = useState({})
    const [counter, setCounter] = useState(false)
-   const [faqVisible, setFaqVisible] = useState(false)
+   const [faqVisible, setFaqVisible] = useState(null)
    const navigate = useNavigate()
+
+   const toggleFAQ = (idx) =>{
+      setFaqVisible(faqVisible === idx ? null : idx)
+   }
 
 
    const handleData = async() =>{
@@ -400,15 +408,39 @@ const HomePage = () => {
             <h1>YOU HAVE QUESTIONS</h1>
             <div className='question-box'>
                {faqs.map((faq, idx) =>(
-                  <div className='questions'>
+                  <div className='questions' key={idx} onClick={()=> toggleFAQ(idx)}>
                      <div className='question'>
                         <h3>{faq.question}</h3>
-                        <span onClick={()=> setFaqVisible(!faqVisible)}>{faqVisible ? <AiOutlineMinus /> : <AiOutlinePlus />}</span>
+                        <span>{faqVisible === idx ? <AiOutlineMinus /> : <AiOutlinePlus />}</span>
                      </div>
-                     <p>{faq.answer}</p>
+                     <p>{faqVisible === idx && faq.answer}</p>
                   </div>
                ))}
             </div>
+        </section>
+
+        {
+         //last banner starts from here...
+        }
+
+        <section className='last-banner'>
+           <div className='last-info'>
+              <h1>Also Available On IOS <br/> And Android</h1>
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+              <div className='last-app-img'>
+                  <div className='last-img'>
+                     <img src={playStore} />
+                  </div>
+                  <div className='last-img'>
+                     <img src={appStore} />
+                  </div>           
+              </div>
+           </div>
+           <img src={phoneImg} className='last-banner-img'/>
+        </section>
+
+        <section style={{minHeight: '150px'}}>
+            <Footer />
         </section>
 
     </div>
