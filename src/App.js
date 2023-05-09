@@ -5,8 +5,7 @@ import Navbar from './components/Navbar';
 import Exchange from './pages/exchange/Exchange';
 import AboutUs from './pages/aboutus/AboutUs';
 import ContactUs from './pages/contactUs/ContactUs';
-import LoginPage from './pages/loginPage/LoginPage';
-import SignUp from './pages/signUp/SignUp';
+import Footer from './components/Footer';
 
 function App() {
 
@@ -19,14 +18,15 @@ function App() {
           <Route path='/exchange' element={<Exchange />} />
           <Route path='/aboutUs' element={<AboutUs />} />
           <Route path='/contactUs' element={<ContactUs />} />
-          <Route path='/loginPage' element={<LoginPage />} />
-          <Route path='/signUp' element={<SignUp />} />
+          <Route path='/' element={<HomePage />} />
+          <Route path='/' element={<HomePage />} />
        </Routes>
        {
         /*
         https://crypto.com/ 
         */
        }
+       <Footer />
     </BrowserRouter>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router'
 import {FiArrowUpRight, FiArrowDownRight} from 'react-icons/fi'
 
@@ -30,7 +30,6 @@ import manEight from '../../images/man-8.avif'
 import phoneImg from '../../images/first-mob.webp'
 import playStore from '../../images/google-play.png'
 import appStore from '../../images/app-store.png'
-import Footer from '../../components/Footer'
 
 const team = [
    {
@@ -437,10 +436,6 @@ const HomePage = () => {
               </div>
            </div>
            <img src={phoneImg} className='last-banner-img'/>
-        </section>
-
-        <section style={{minHeight: '150px'}}>
-            <Footer />
         </section>
 
     </div>

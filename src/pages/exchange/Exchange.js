@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router'
-import { Link } from 'react-router-dom'
+import './exchange.scss'
+import {AiOutlineSearch} from 'react-icons/ai'
 
 const Exchange = () => {
   const location = useLocation()
@@ -37,18 +38,15 @@ const Exchange = () => {
 
   const working = () =>{
     return (
-      <div
-        style={{
-          height: '90vh',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          flexDirection: 'column',
-          gap: '20px',
-        }}
-      >
-         <h1>Work in progress</h1>
-         <Link to='/'>Go to home page!</Link>
+      <div className='exchange-container'>
+        <section className='exchange-hero-sec'>
+            <form className='search-bar'>
+               <input type='text' placeholder='Search your stock...' />
+               <AiOutlineSearch className='search-icon'/>
+            </form>    
+        </section>
+        <div className='exchange-main'>
+        </div>
       </div>
     )
   }

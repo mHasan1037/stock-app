@@ -9,8 +9,8 @@ const menuItems = [
     {text: 'Exchange', link: '/exchange'},
     {text: 'About Us', link: '/aboutUs'},
     {text: 'Contact Us', link: '/contactUs'},
-    {text: 'Login', link: '/loginPage'},
-    {text: 'Sign Up', link: '/signUp'}
+    {text: 'Login', link: '/'},
+    {text: 'Sign Up', link: '/'}
 ]
 
 const Navbar = () => {

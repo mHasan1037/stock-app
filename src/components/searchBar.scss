@@ -27,7 +27,7 @@
         &:focus{
             outline: none;
             background-color: #010f35;
-            border: 2px solid #1B3887;
+            border: 2px solid $searchBorder;
             border-left: 2px solid transparent;
             border-radius: 5px;
         }
@@ -37,7 +37,7 @@
        color: $white;
        border: none;
        padding: 10px 12px;
-       border: 2px solid #1B3887;
+       border: 2px solid $searchBorder;
        cursor: pointer;
        border-radius: 5px 0px 0px 5px;
 

@@ -60,8 +60,8 @@ const Footer = () => {
             }
             <div style={{
                 width: '100%',
-                height: '1px',
-                background: '#a5a4a4',
+                height: '0.5px',
+                background: '#5D5D5D',
                 marginTop: '70px'
             }}>
             </div>
