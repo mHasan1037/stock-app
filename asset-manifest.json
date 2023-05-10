@@ -1,7 +1,8 @@
 {
   "files": {
-    "main.css": "/stock-app/static/css/main.f2de863a.css",
-    "main.js": "/stock-app/static/js/main.de026e9b.js",
+    "main.css": "/stock-app/static/css/main.4174f4f2.css",
+    "main.js": "/stock-app/static/js/main.596dc2cd.js",
+    "static/media/stock-bg.jpg": "/stock-app/static/media/stock-bg.7c04f1882d39cb5145d4.jpg",
     "static/media/stock-graph.webp": "/stock-app/static/media/stock-graph.e07285055266cd9df6a4.webp",
     "static/media/man-3.avif": "/stock-app/static/media/man-3.7191c0cd35c6904fab67.avif",
     "static/media/first-mob.webp": "/stock-app/static/media/first-mob.c5fb5552c36997da3b97.webp",
@@ -31,11 +32,11 @@
     "static/media/amd.webp": "/stock-app/static/media/amd.548240a8b16d1363660a.webp",
     "static/media/revicons.woff": "/stock-app/static/media/revicons.e8746a624ed098489406.woff",
     "index.html": "/stock-app/index.html",
-    "main.f2de863a.css.map": "/stock-app/static/css/main.f2de863a.css.map",
-    "main.de026e9b.js.map": "/stock-app/static/js/main.de026e9b.js.map"
+    "main.4174f4f2.css.map": "/stock-app/static/css/main.4174f4f2.css.map",
+    "main.596dc2cd.js.map": "/stock-app/static/js/main.596dc2cd.js.map"
   },
   "entrypoints": [
-    "static/css/main.f2de863a.css",
-    "static/js/main.de026e9b.js"
+    "static/css/main.4174f4f2.css",
+    "static/js/main.596dc2cd.js"
   ]
 }
