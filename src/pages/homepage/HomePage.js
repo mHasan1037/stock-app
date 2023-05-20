@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router'
-import {FiArrowUpRight, FiArrowDownRight} from 'react-icons/fi'
+import { StockContext } from '../../hooks/StockContext'
 
 import CountUp from 'react-countup'
 import ScrollTrigger from 'react-scroll-trigger'
@@ -8,11 +8,13 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import './home.scss'
 
-import images from './importLogos'
 import SearchBar from '../../components/SearchBar'
+
 import {FaFacebookF} from 'react-icons/fa'
+import {FiArrowUpRight, FiArrowDownRight} from 'react-icons/fi'
 import {AiOutlineTwitter, AiOutlineInstagram, AiOutlinePlus, AiOutlineMinus} from 'react-icons/ai'
 
+import images from './importLogos'
 import Intel from '../../images/intel.png'
 import Tesla from '../../images/Tesla.png'
 import Meta from '../../images/meta.png'
@@ -100,11 +102,12 @@ const faqs = [
 
 
 
-const HomePage = () => {
+const HomePage = ({onFetchStock}) => {
    const [companyTicket, setCompanyTicket] = useState({})
    const [counter, setCounter] = useState(false)
    const [faqVisible, setFaqVisible] = useState(null)
    const navigate = useNavigate()
+   const { fetchStock } = useContext(StockContext)
 
    const toggleFAQ = (idx) =>{
       setFaqVisible(faqVisible === idx ? null : idx)
@@ -115,6 +118,7 @@ const HomePage = () => {
       const response = await fetch(`https://api.twelvedata.com/time_series?symbol=AAPL,MSFT,TSLA,META,AMZN&interval=1day&apikey=fc8e2d7c7326415a8e316a8d6a6e853d`)
       const jsonData = await response.json() 
       setCompanyTicket(jsonData)
+      fetchStock(jsonData)
    }
 
 
@@ -135,7 +139,6 @@ const HomePage = () => {
    })
 
    const handleDetails = (ticket) =>{
-      console.log(ticket)
       navigate('/exchange', {state: {ticket}})
    }
 
@@ -375,7 +378,7 @@ const HomePage = () => {
                      team.map((player, idx) =>{
                         const {pic, name, designation} = player
                         return (
-                        <div className='team-slide'>
+                        <div className='team-slide' key={idx}>
                            <div className="team-img-box">
                               <img src={pic} width="50px"/>
                               <div className="team-hidden-Intro">
