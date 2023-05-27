@@ -102,7 +102,7 @@ const faqs = [
 
 
 
-const HomePage = ({onFetchStock}) => {
+const HomePage = () => {
    const [companyTicket, setCompanyTicket] = useState({})
    const [counter, setCounter] = useState(false)
    const [faqVisible, setFaqVisible] = useState(null)

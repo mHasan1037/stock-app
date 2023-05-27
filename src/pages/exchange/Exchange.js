@@ -1,14 +1,47 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { useLocation, useNavigate } from 'react-router'
+import { StockContext } from '../../hooks/StockContext'
 import './exchange.scss'
-import {AiOutlineSearch} from 'react-icons/ai'
+import {AiOutlineSearch, AiOutlineStock} from 'react-icons/ai'
+import {RiStockFill} from 'react-icons/ri'
+import {SiShutterstock} from 'react-icons/si'
+import {CgShutterstock} from 'react-icons/cg'
+import ExchangeChart from './ExchangeChart'
 
-const Exchange = ({onPassData}) => {
+const Exchange = () => {
   const location = useLocation()
   const [ticketData, setTicketData] = useState('')
   const navigate = useNavigate()
+  const { passData } = useContext(StockContext)
+  const [dataStore, setDataStore] = useState([])
+  
 
-  console.log(onPassData)
+  useEffect(()=>{
+        const dataStock = Object.entries(passData).map(([key, value])=>{
+        const names = value.meta.symbol
+        const dates = value.values[0].datetime
+        const high = parseInt(value.values[0].high)
+        const low = parseInt(value.values[0].low)
+        const open = parseInt(value.values[0].open)
+        const close = parseInt(value.values[0].close)
+        const allHigh = Object.entries(value.values)
+
+
+        allHigh.map(([subkey, subValue], idx) =>{
+           const {high, low, open, close, datetime} = subValue
+           return [high, low, open, close, datetime]
+        })
+
+        return [names, dates, high, low, open, close, allHigh]
+  })
+
+
+    setDataStore(dataStock)
+  }, [])
+
+
+
+
 
   
   useEffect(()=>{
@@ -48,28 +81,60 @@ const Exchange = ({onPassData}) => {
                <AiOutlineSearch className='search-icon'/>
             </form>    
         </section>
-        <div className='exchange-main'>
-            <div className='exchange-stock-container'>
+
+        {
+          /*
+           top stock information starts from here
+          */
+        }
+
+        {
+          dataStore.map((data, id) => {
+            const [names, dates, high, low, open, close, allHigh] = data
+           
+            return <section className='exchange-main' key={id}>
+            <div className='exchange-stock-container'>   
                 <div className='exchange-stock-box'>
-                    <h1>MISF</h1>
+                    <div className='exchange-heading'>
+                      <h1>{names}</h1>
+                      <p>Updated till:- &nbsp; {dates}</p>
+                    </div>
                     <div className='exchange-stock-info'>
                         <div className='exchange-left'>
                           <div className='exchange-left-info'>
-                              <div></div>
-                              <div></div>
-                              <div></div>
-                              <div></div>
+                              <div className='exchange-left-box'>      
+                                 <AiOutlineStock className='exchange-graph' />
+                                 <h1>{high}</h1>
+                                 <p>High</p>
+                              </div>
+                              <div className='exchange-left-box'>
+                                 <RiStockFill className='exchange-graph' />
+                                 <h1>{low}</h1>
+                                 <p>Low</p>
+                              </div>
+                              <div className='exchange-left-box'> 
+                                 <SiShutterstock className='exchange-graph'/>
+                                 <h1>{open}</h1>
+                                 <p>Open</p>
+                              </div>
+                              <div className='exchange-left-box'>
+                                 <CgShutterstock className='exchange-graph' /> 
+                                 <h1>{close}</h1>
+                                 <p>Close</p>
+                              </div>
                           </div>
                         </div>
                         <div className='exchange-right'>
-                          <div>
-                              <div></div>
-                          </div>
+                              <ExchangeChart className="chart-box" candleStick={allHigh} />
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
+          })
+        }
+
+        
       </div>
     )
   }

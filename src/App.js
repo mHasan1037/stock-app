@@ -22,8 +22,8 @@ function App() {
         <Navbar />
         <Routes>
             <Route path='/' element={<HomePage />} />
-  
-            <Route path='/exchange' element={<Exchange onPassData={passData} />} />
+            <Route path='/stock-app' element={<HomePage />} />
+            <Route path='/exchange' element={<Exchange />} />
             <Route path='/aboutUs' element={<AboutUs />} />
             <Route path='/contactUs' element={<ContactUs />} />
             <Route path='/' element={<HomePage />} />

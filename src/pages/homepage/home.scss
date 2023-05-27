@@ -217,20 +217,20 @@
             margin: 0 auto;
         }
         @include breakpoint(lg){
-            width: 90%;
+            margin: 0 auto;
             width: calc(100% - 20px);
         }
         @include breakpoint(md){
-            width: 90%;
+            margin: 0 auto;
             width: calc(100% - 20px);
         }
         @include breakpoint(sm){
-            width: 90%;
+            margin: 0 auto;
             width: calc(100% - 20px);
             padding: 50px 0;
         }
         @include breakpoint(xs){
-            width: 90%;
+            margin: 0 auto;
             width: calc(100% - 20px);
             padding: 50px 0;
         }

@@ -109,52 +109,131 @@
         margin: 0 auto;
         padding: 80px 0;
 
+
+        @include breakpoint(xl){
+            width: calc(100% - 10%);
+            margin: 0 auto;
+        }
+        @include breakpoint(lg){
+            width: calc(100% - 10%);
+            margin: 0 auto;
+        }
+        @include breakpoint(md){
+            margin: 0 auto;
+            width: calc(100% - 20px);
+        }
+        @include breakpoint(sm){
+            margin: 0 auto;
+            width: calc(100% - 20px);
+        }
+        @include breakpoint(xs){
+            margin: 0 auto;
+            width: calc(100% - 20px);
+        }
+
+
         .exchange-stock-container{
+            width: 100%;
+
             .exchange-stock-box{
                 width: 100%;
-                background-color: rgb(10, 10, 10);
+                background-color: $navBackground;
                 border-radius: 10px;
                 padding: 40px;
 
-                .exchange-stock-info{
+                @include breakpoint(md){
+                    padding: 20px;
+                }
+
+                .exchange-heading{
                     display: flex;
-                    flex-wrap: wrap;
+                    align-items: end;
+                    justify-content: space-between;
+                }
+
+                .exchange-stock-info{
+                    width: 100%;
+                    display: flex;
                     padding-top: 20px;
+                    gap: 20px;
+                    position: relative;
+
+                    &::before{
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background-image: url(../../images/stock-graph.webp);
+                        background-position: center;
+                        background-size: cover;
+                        background-repeat: no-repeat;
+                        opacity: 0.03;
+                    }
+
+                    @include breakpoint(sm){
+                        flex-direction: column;
+                        gap: 40px;
+                    }
+                    @include breakpoint(xs){
+                        flex-direction: column;
+                        gap: 40px;
+                    }
 
                     .exchange-left{
-                        flex: 1;
+                        flex: 0.7;
     
                         .exchange-left-info{
+                            width: 100%;
                             display: flex;
-                            justify-content: space-around;
+                            justify-content: space-between;
                             flex-wrap: wrap;
                             gap: 20px;
     
-                            div{
-                                width: 48%;
+                            .exchange-left-box{
+                                width: 45%;
                                 height: 150px;
-                                background-color: $white;
+                                background-color: $bgBlack;
                                 border-radius: 10px;
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                justify-content: center;
+
+                                
+                                @include breakpoint(sm){
+                                    height: 120px;
+                                }
+                                @include breakpoint(xs){
+                                    height: 120px;
+                                }
+
+                                .exchange-graph{
+                                    font-size: 20px;
+                                }
+
+                                h1{
+                                    font-size: 30px;
+                                    margin: 10px 0;
+                                }
                             }
                         }
                     }
     
                     .exchange-right{
-                        flex: 1;
+                        flex: 1.3;
+                        min-height: 350px;
+
+                        @include breakpoint(xs){
+                            min-height: 250px;
+                        }
     
-                        div{
-                            height: 100%;
+                        .chart-box{
+                            background-color: $bgBlack;
                             width: 100%;
-                            box-sizing: border-box;
-    
-                            div{
-                                background-color: $white;
-                                height: 100%;
-                                min-height: 300px;
-                                width: 90%;
-                                margin: auto;
-                                border-radius: 10px;
-                            }
+                            border-radius: 10px;
+                            min-height: 100%;
                         }
                     }
                 }
@@ -162,3 +241,8 @@
         }
     }
 }
+
+.apexcharts-tooltip {
+    background: #f3f3f3;
+    color: black;
+  }
