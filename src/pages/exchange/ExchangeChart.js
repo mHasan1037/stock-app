@@ -5,8 +5,7 @@ import dayjs from 'dayjs';
 
 
 
-const ExchangeChart = ({candleStick}) => {
-
+const ExchangeChart = ({candleStick, name}) => {
 
   let series = [
     {
@@ -23,7 +22,7 @@ const ExchangeChart = ({candleStick}) => {
     series[0].data.push(
       {
         x: new Date(datetime),
-        y: [open, close, high, low],
+        y: [open, high, low, close],
       }
      )
    
@@ -37,7 +36,7 @@ const ExchangeChart = ({candleStick}) => {
       type: 'candlestick',
     },
     title: {
-      text: 'CandleStick Chart - Category X-axis',
+      text: `Last 30 days data of ${name}`,
       align: 'left',
     },
     annotations: {

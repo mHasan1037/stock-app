@@ -29,11 +29,6 @@ function App() {
             <Route path='/' element={<HomePage />} />
             <Route path='/' element={<HomePage />} />
         </Routes>
-        {
-          /*
-          https://crypto.com/ 
-          */
-        }
         <Footer />
       </BrowserRouter>
     </StockContext.Provider>
@@ -41,3 +36,13 @@ function App() {
 }
 
 export default App;
+
+
+{
+
+  // https://crypto.com/ 
+ 
+
+  //symbol search
+  //https://api.twelvedata.com/symbol_search?symbol=FA
+}

@@ -1,61 +1,68 @@
-.heroSearch{
+.heroSearchSec{
+    position: relative;
 
-    input{
-        border: none;
-        background-color: transparent;
-        border-bottom: 2px solid #1B3887;
-        border-left: 2px solid transparent;
-        border-top: 2px solid transparent;
-        border-right: 2px solid transparent;
-        color: $white;
-        padding: 10px 12px;
-        border-radius: 0 0 0 5px;
-
-        @include breakpoint(sm){
-            font-size: 10px;
-            padding: 6px 8px;
-            border-width: 1px;
-            width: 60px;
-        }
-        @include breakpoint(xs){
-            font-size: 10px;
-            padding: 6px 8px;
-            border-width: 1px;
-            width: 100px;
-        }
-
-        &:focus{
-            outline: none;
-            background-color: #010f35;
-            border: 2px solid $searchBorder;
+    .heroSearch{
+    
+        input{
+            border: none;
+            background-color: transparent;
+            border-bottom: 2px solid #1B3887;
             border-left: 2px solid transparent;
-            border-radius: 5px;
+            border-top: 2px solid transparent;
+            border-right: 2px solid transparent;
+            color: $white;
+            padding: 10px 12px;
+            border-radius: 0 0 0 5px;
+    
+            @include breakpoint(sm){
+                font-size: 10px;
+                padding: 6px 8px;
+                border-width: 1px;
+                width: 60px;
+            }
+            @include breakpoint(xs){
+                font-size: 10px;
+                padding: 6px 8px;
+                border-width: 1px;
+                width: 100px;
+            }
+    
+            &:focus{
+                outline: none;
+                background-color: $bgTwo;
+                border: 2px solid $searchBorder;
+                border-left: 2px solid transparent;
+                border-radius: 5px;
+            }
+        }
+        button{
+           background-color: $bgTwo;
+           color: $white;
+           border: none;
+           padding: 10px 12px;
+           border: 2px solid $searchBorder;
+           cursor: pointer;
+           border-radius: 5px 0px 0px 5px;
+    
+           @include breakpoint(sm){
+                font-size: 10px;
+                padding: 6px 8px;
+                border-width: 1px;
+           }
+           @include breakpoint(xs){
+                font-size: 10px;
+                padding: 6px 8px;
+                border-width: 1px;
+           }
+    
+           &:hover{
+             border-radius: 5px;
+             border-radius: 5px;
+             background-color: $bgTwo;
+           }
         }
     }
-    button{
-       background-color: #010f35;
-       color: $white;
-       border: none;
-       padding: 10px 12px;
-       border: 2px solid $searchBorder;
-       cursor: pointer;
-       border-radius: 5px 0px 0px 5px;
 
-       @include breakpoint(sm){
-            font-size: 10px;
-            padding: 6px 8px;
-            border-width: 1px;
-       }
-       @include breakpoint(xs){
-            font-size: 10px;
-            padding: 6px 8px;
-            border-width: 1px;
-       }
+    @include searchBox();
 
-       &:hover{
-         border-radius: 5px;
-         border-radius: 5px;
-         background-color: #010f35;
-       }
-    }
 }

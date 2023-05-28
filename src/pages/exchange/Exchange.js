@@ -1,5 +1,5 @@
-import React, { useEffect, useState, useContext } from 'react'
-import { useLocation, useNavigate } from 'react-router'
+import React, { useEffect, useState, useContext, useRef } from 'react'
+import { useLocation } from 'react-router'
 import { StockContext } from '../../hooks/StockContext'
 import './exchange.scss'
 import {AiOutlineSearch, AiOutlineStock} from 'react-icons/ai'
@@ -7,15 +7,62 @@ import {RiStockFill} from 'react-icons/ri'
 import {SiShutterstock} from 'react-icons/si'
 import {CgShutterstock} from 'react-icons/cg'
 import ExchangeChart from './ExchangeChart'
+import SpecificStock from './SpecificStock'
+import useSearch from '../../hooks/useSearch'
 
 const Exchange = () => {
   const location = useLocation()
   const [ticketData, setTicketData] = useState('')
-  const navigate = useNavigate()
   const { passData } = useContext(StockContext)
   const [dataStore, setDataStore] = useState([])
-  
+  const [stockName, setStockName] = useState('')
 
+  const [changeUrl, setChangeUrl] = useState('')
+  const { searchStock } = useSearch(changeUrl)
+  const [searchResult, setSearchResult] = useState([])
+  const ulRef = useRef(null)
+
+
+  // get search data from the useSearch custom hook
+  useEffect(()=>{
+    if(stockName.length > 0){
+      setChangeUrl(`https://api.twelvedata.com/symbol_search?symbol=${stockName.toUpperCase()}`)
+    }else{
+      setChangeUrl('')
+    } 
+  }, [stockName])
+
+  useEffect(()=>{
+    setSearchResult(searchStock)
+  }, [searchStock])
+
+
+
+  // if you click outside of the searchbar the searchbar will disapear
+  const clickOutsideUl = (e) =>{
+      if(ulRef.current && !ulRef.current.contains(e.target)){
+        setSearchResult([])
+      }
+   }
+
+   useEffect(()=>{
+      document.addEventListener('click', clickOutsideUl)
+
+      return () => {
+        document.removeEventListener('click', clickOutsideUl)
+      }
+   }, [])
+
+
+
+  // click on the <li> will take the stock sambol to exchange page
+      const handleSearchOptions = (symbol) =>{
+        setTicketData(symbol)
+     }
+
+
+  
+ //stock information of top five company is extracted here...
   useEffect(()=>{
         const dataStock = Object.entries(passData).map(([key, value])=>{
         const names = value.meta.symbol
@@ -34,12 +81,8 @@ const Exchange = () => {
 
         return [names, dates, high, low, open, close, allHigh]
   })
-
-
     setDataStore(dataStock)
   }, [])
-
-
 
 
 
@@ -51,34 +94,48 @@ const Exchange = () => {
   }, [])
 
 
+  //passing the stock name to stock by search section
+  const handleStock = (e) =>{
+    e.preventDefault()
+    setTicketData(stockName)
+    setStockName('')
+  }
+
 
   const data = () =>{
     return (
-      <div
-          style={{
-            height: '90vh',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            flexDirection: 'column',
-            gap: '20px',
-          }}
-        >
-          <h3>Work in progress</h3>
-          <h2>You will see all the data of <span style={{color: 'green', fontSize: '2.5rem'}}>{`{ ${ticketData} }`}</span> on this page very soon</h2>
-          <a href='#' onClick={()=> navigate('/')}>Go to home page</a>
-      </div>
+      <SpecificStock ticketData={ticketData} />
     )
   }
 
-  const working = () =>{
+  const allStockInfo = () =>{
     return (
       <div className='exchange-container'>
         <section className='exchange-hero-sec'>
             <h1>Secure Investing for <span>Everyday Traders</span>.</h1>
-            <form className='search-bar'>
-               <input type='text' placeholder='Search your stock...' />
+            <form className='search-bar' onSubmit={handleStock}>
+               <input type='text' placeholder='Search your stock...' value={stockName} onChange={(e)=> setStockName(e.target.value)}/>
                <AiOutlineSearch className='search-icon'/>
+
+              <ul className='searchOptions' ref={ulRef} style={searchResult.length !== 0 ? {display: 'block'} : {display: 'none'}}>
+                    {          
+                  
+                    searchResult.length !== 0 && searchResult.map((stock, idx) =>{
+                                    const {symbol, instrument_name} = stock
+                      
+                                    if(stock){
+                                      return(
+                                        <li key={idx} onClick={()=> handleSearchOptions(symbol)}>{instrument_name}</li>
+                                      )
+                                    }else{
+                                      return (
+                                        <li>No company found!</li>
+                                      )
+                                    }
+          
+                                  }) 
+                  }
+              </ul>
             </form>    
         </section>
 
@@ -125,7 +182,7 @@ const Exchange = () => {
                           </div>
                         </div>
                         <div className='exchange-right'>
-                              <ExchangeChart className="chart-box" candleStick={allHigh} />
+                              <ExchangeChart className="chart-box" candleStick={allHigh} name={names} />
                         </div>
                     </div>
                 </div>
@@ -141,7 +198,7 @@ const Exchange = () => {
 
   return(
     <>
-      {ticketData ? data() : working() }
+      {ticketData ? data() : allStockInfo() }
     </>
   )
 }

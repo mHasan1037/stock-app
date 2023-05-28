@@ -60,6 +60,7 @@
             z-index: 1;
             padding: 0 25px;
             border: 2px solid $white;
+            position: relative;
 
             input{
                 background-color: transparent;
@@ -101,6 +102,8 @@
                     font-size: 12px;
                 } 
             }
+
+            @include searchBox();
         }
     }
 
