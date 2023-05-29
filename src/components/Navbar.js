@@ -6,9 +6,9 @@ import useMobileBreakPoint from '../hooks/useMobileBreakPoint'
 
 const menuItems = [
     {text: 'Home', link: '/'},
-    {text: 'Exchange', link: '/exchange'},
-    {text: 'About Us', link: '/aboutUs'},
-    {text: 'Contact Us', link: '/contactUs'},
+    {text: 'Stock', link: '/exchange'},
+    {text: 'About', link: '/aboutUs'},
+    {text: 'Contact', link: '/contactUs'},
     {text: 'Login', link: '/'},
     {text: 'Sign Up', link: '/'}
 ]

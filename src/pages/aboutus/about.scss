@@ -1,0 +1,11 @@
+@import '../../style/variables.scss';
+@import '../../style/colors.scss';
+
+.about-container{
+    background: $bgBlack;
+    color: $white;
+
+    .link-styles{
+        color: green
+    }
+}

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import './about.scss'
 
 const AboutUs = () => {
 
@@ -13,9 +14,10 @@ const AboutUs = () => {
           flexDirection: 'column',
           gap: '20px',
         }}
+        className='about-container'
       >
          <h1>Work in progress</h1>
-         <Link to='/'>Go to home page!</Link>
+         <Link to='/' className='link-styles'>Go to home page!</Link>
     </div>
   )
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import './contact.scss'
 
 const ContactUs = () => {
   return (
@@ -12,9 +13,10 @@ const ContactUs = () => {
           flexDirection: 'column',
           gap: '20px',
         }}
+        className='contact-container'
       >
         <h1>Work in progress</h1>
-        <Link to='/'>Go to home page!</Link>
+        <Link to='/' className="link-styles">Go to home page!</Link>
     </div>
   )
 }

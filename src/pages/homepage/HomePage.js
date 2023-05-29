@@ -156,14 +156,14 @@ const HomePage = () => {
             <td>{low}</td>
             <td>{volume}</td>
             <td style={{
-               color: parseFloat((open - close).toFixed(2)) < 0 ? 'red' : 'green',
+               color: parseFloat((open - close).toFixed(2)) < 0 ? 'green' : 'red',
                display: 'flex',
                justifyContent: 'center',
                alignItems: 'center',
                gap: '3px'
                }}>
                {parseFloat((open - close).toFixed(2))}
-               {parseFloat((open - close).toFixed(2)) < 0 ? <FiArrowDownRight /> : <FiArrowUpRight />}
+               {parseFloat((open - close).toFixed(2)) < 0 ?  <FiArrowUpRight /> : <FiArrowDownRight />}
             </td>
             <td><button className='stock-details-btn' onClick={()=> handleDetails(stock.key)}>Details</button></td>
          </tr>

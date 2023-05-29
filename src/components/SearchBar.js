@@ -5,6 +5,7 @@ import useSearch from '../hooks/useSearch'
 const SearchBar = ({marginTop, fontSize}) => {
     const [ticket, setTicket] = useState('')
     const [changeUrl, setChangeUrl] = useState('')
+    const [displayOptions, setDisplayOptions] = useState(false)
     const [searchResult, setSearchResult] = useState([])
     const { searchStock } = useSearch(changeUrl)
     const navigate = useNavigate()
@@ -44,6 +45,7 @@ const SearchBar = ({marginTop, fontSize}) => {
    const clickOutsideUl = (e) =>{
       if(ulRef.current && !ulRef.current.contains(e.target)){
         setSearchResult([])
+        setDisplayOptions(false)
       }
    }
 
@@ -56,30 +58,56 @@ const SearchBar = ({marginTop, fontSize}) => {
    }, [])
 
 
+   const handleStockInput = (e) =>{
+       setTicket(e.target.value)
+       setDisplayOptions(true)
+   }
+
+
   return (
     <div className='heroSearchSec'>
         <form className='heroSearch' onSubmit={handleSubmit} style={{marginTop: marginTop}}>
             <button type='submit' style={{fontSize: fontSize}}>Search</button>
-            <input type='text' style={{fontSize: fontSize}} value={ticket} placeholder='Search Ticket...' onChange={(e)=> setTicket(e.target.value)} required/> 
+            <input type='text' style={{fontSize: fontSize}} value={ticket} placeholder='Search Ticket...' onChange={handleStockInput} required/> 
         </form>
-        <ul className='searchOptions' ref={ulRef} style={searchResult.length !== 0 ? {display: 'block'} : {display: 'none'}}>
-          {          
+        <ul className='searchOptions' ref={ulRef} style={displayOptions ? {display: 'block'} : {display: 'none'}}>
+          {/* {          
             
           searchResult.length !== 0 && searchResult.map((stock, idx) =>{
                           const {symbol, instrument_name} = stock
             
-                          if(stock){
+                          if(symbol){
                             return(
                               <li key={idx} onClick={()=> handleSearchOptions(symbol)}>{instrument_name}</li>
                             )
-                          }else{
+                          }
+                          if(!stock){
                             return (
                               <li>No company found!</li>
                             )
                           }
 
                         }) 
-          } 
+          }  */}
+
+          {          
+            
+            searchResult.length !== 0 ? (
+              searchResult.map((stock, idx) =>{
+                const {symbol, instrument_name} = stock
+  
+                if(symbol){
+                  return(
+                    <li key={idx} onClick={()=> handleSearchOptions(symbol)}>{instrument_name}</li>
+                  )
+                }
+
+              })
+            ) : 
+            (
+                <li style={{minWidth: '200px'}}>No company found! <br></br> Search by stock symbol</li>
+            ) 
+            }
         </ul>
     </div>
   )
