@@ -1,0 +1,21 @@
+@import '../../style/variables.scss';
+@import '../../style/colors.scss';
+
+.lost_container{
+    height: 70vh;
+    background: $bgBlack;
+    color: $white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.specific_container{
+    height: 70vh;
+    background: $bgBlack;
+    color: $white;
+    display: grid;
+    place-items: center;
+}

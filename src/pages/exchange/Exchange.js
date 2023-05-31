@@ -105,17 +105,17 @@ const Exchange = () => {
     setStockName('')
   }
 
+   // onclick on the input of search stock
+   const handleStockInput = (e) =>{
+    setStockName(e.target.value)
+    setDisplayOptions(true)
+    }
+
 
   const data = () =>{
     return (
       <SpecificStock ticketData={ticketData} />
     )
-  }
-
- // onclick on the input of search stock
-  const handleStockInput = (e) =>{
-      setStockName(e.target.value)
-      setDisplayOptions(true)
   }
 
   const allStockInfo = () =>{

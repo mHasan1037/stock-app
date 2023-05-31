@@ -1,0 +1,58 @@
+@import '../../src/style/variables.scss';
+@import '../../src/style/colors.scss';
+
+
+.search-bar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $navBackground;
+    border-radius: 5px;
+    z-index: 1;
+    padding: 0 25px;
+    border: 2px solid $white;
+    position: relative;
+
+    input{
+        background-color: transparent;
+        border: none;
+        padding: 15px 0;
+        color: $white;
+        font-size: 20px;
+
+        &:focus{
+            outline: none;
+        }
+
+        @include breakpoint(md){
+            padding: 10px 10px;
+            font-size: 14px;
+        }    
+        @include breakpoint(sm){
+            padding: 10px 5px;
+            font-size: 14px;
+        }
+        @include breakpoint(xs){
+            padding: 10px 5px;
+            font-size: 12px;
+        }  
+    }
+
+    .search-icon{
+        font-size: 20px;
+        color: $white;
+        cursor: pointer;
+
+        @include breakpoint(md){
+            font-size: 12px;
+        } 
+        @include breakpoint(sm){
+            font-size: 12px;
+        } 
+        @include breakpoint(xs){
+            font-size: 12px;
+        } 
+    }
+
+    @include searchBox();
+}
