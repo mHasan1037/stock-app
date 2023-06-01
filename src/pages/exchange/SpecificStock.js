@@ -44,24 +44,6 @@ const SpecificStock = ({ticketData}) => {
     window.scrollTo(0, 0)
   }, [])
 
-  // return (
-  //   // <div
-  //   //       style={{
-  //   //         height: '90vh',
-  //   //         display: 'flex',
-  //   //         justifyContent: 'center',
-  //   //         alignItems: 'center',
-  //   //         flexDirection: 'column',
-  //   //         gap: '20px',
-  //   //       }}
-  //   //     >
-  //   //       <h3>Work in progress</h3>
-  //   //       <h2>You will see all the data of <span style={{color: 'green', fontSize: '2.5rem'}}>{`{ ${ticketData} }`}</span> on this page very soon</h2>
-  //   //       <a href='#' onClick={()=> navigate('/')}>Go to home page</a>
-  //   //   </div>
-    
-
-  // )
 
   if(currentInfo.status === 'error' || thirtyDayInfo.status === 'error'){
     return (
@@ -78,7 +60,88 @@ const SpecificStock = ({ticketData}) => {
   }else{
     return (
     <div className='specific_container'>
-       we got it 
+        <div className='specific_main'>
+            <div className='specific_left'>
+                <div className='spec_left_top'>
+                    <div className='company_name'>
+                       <h2>{currentInfo.name}</h2>
+                       <p>{thirtyDayInfo && thirtyDayInfo.meta.exchange_timezone} ({currentInfo.is_market_open ? 'Open' : 'Close'})</p>
+                    </div>
+                    <div className='stock_type'>
+                       <h3>{thirtyDayInfo && thirtyDayInfo.meta.type}</h3>
+                       <p>{new Date(currentInfo.timestamp * 1000).toLocaleString()}</p>
+                    </div>
+                </div>
+                <div className='stock_current_info'>
+                    <div className='stock_daily_info'>
+                        <div className='stock_info_box'>
+                            <p>Open</p>
+                            <h3>{currentInfo.open}</h3>
+                        </div>
+                        <div className='stock_info_box'>
+                            <p>High</p>
+                            <h3>{currentInfo.high}</h3>
+                        </div>
+                        <div className='stock_info_box'>
+                            <p>Volume</p>
+                            <h3>{currentInfo.volume}</h3>
+                        </div>
+                        <div className='stock_info_box'>
+                            <p>Close</p>
+                            <h3>{currentInfo.close}</h3>
+                        </div>
+                        <div className='stock_info_box'>
+                            <p>Low</p>
+                            <h3>{currentInfo.low}</h3>
+                        </div>
+                        <div className='stock_info_box'>
+                            <p>Avg_volume</p>
+                            <h3>{currentInfo.average_volume}</h3>
+                        </div>
+                        <div className='stock_info_box'>
+                            <p>Prev Close</p>
+                            <h3>{currentInfo.previous_close}</h3>
+                        </div>
+                        <div className='stock_info_box'>
+                            <p>Change</p>
+                            <h3>{currentInfo.change}</h3>
+                        </div>
+                        <div className='stock_info_box'>
+                            <p>Per_change</p>
+                            <h3>{currentInfo.percent_change}</h3>
+                        </div>
+                    </div>
+                    <div className='last_year_info'>
+                        <p>Last one year data:-</p>
+
+                        <div className='last_year_div'>
+                            <div><p>High</p><h3>{currentInfo && parseFloat(currentInfo.fifty_two_week.high.toFixed(2)})</h3></div>
+                            <div><p>Change</p><h3>{currentInfo && currentInfo.fifty_two_week.high_change}</h3></div>
+                            <div><p>Percentage</p><h3>{currentInfo && currentInfo.fifty_two_week.high_change_percent}</h3></div>
+                        </div>
+                        <div className='last_year_div'>
+                            <div><p>Low</p><h3>{currentInfo && currentInfo.fifty_two_week.low}</h3></div>
+                            <div><p>Change</p><h3>{currentInfo && currentInfo.fifty_two_week.low_change}</h3></div>
+                            <div><p>Percentage</p><h3>{currentInfo && currentInfo.fifty_two_week.low_change_percent}</h3></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className='specific_right'>
+                <p>Last one year data:-</p>
+
+                <div>
+                    <div><p>High</p><h3>{currentInfo && currentInfo.fifty_two_week.high}</h3></div>
+                    <div><p>Change</p><h3>{currentInfo && currentInfo.fifty_two_week.high_change}</h3></div>
+                    <div><p>Percentage</p><h3>{currentInfo && currentInfo.fifty_two_week.high_change_percent}</h3></div>
+                </div>
+                <div>
+                    <div><p>Low</p><h3>{currentInfo && currentInfo.fifty_two_week.low}</h3></div>
+                    <div><p>Change</p><h3>{currentInfo && currentInfo.fifty_two_week.low_change}</h3></div>
+                    <div><p>Percentage</p><h3>{currentInfo && currentInfo.fifty_two_week.low_change_percent}</h3></div>
+                </div>
+            </div>
+        </div>
     </div>
     )
   }
