@@ -115,7 +115,7 @@ const SpecificStock = ({ticketData}) => {
                         <p>Last one year data:-</p>
 
                         <div className='last_year_div'>
-                            <div><p>High</p><h3>{currentInfo && parseFloat(currentInfo.fifty_two_week.high.toFixed(2)})</h3></div>
+                            <div><p>High</p><h3>{currentInfo && currentInfo.fifty_two_week.high}</h3></div>
                             <div><p>Change</p><h3>{currentInfo && currentInfo.fifty_two_week.high_change}</h3></div>
                             <div><p>Percentage</p><h3>{currentInfo && currentInfo.fifty_two_week.high_change_percent}</h3></div>
                         </div>
