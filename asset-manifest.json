@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/stock-app/static/css/main.8036cb08.css",
-    "main.js": "/stock-app/static/js/main.748af008.js",
+    "main.css": "/stock-app/static/css/main.30c171ca.css",
+    "main.js": "/stock-app/static/js/main.f559ebc1.js",
     "static/media/stock-bg.jpg": "/stock-app/static/media/stock-bg.7c04f1882d39cb5145d4.jpg",
     "static/media/stock-graph.webp": "/stock-app/static/media/stock-graph.e07285055266cd9df6a4.webp",
     "static/media/man-3.avif": "/stock-app/static/media/man-3.7191c0cd35c6904fab67.avif",
@@ -32,11 +32,11 @@
     "static/media/amd.webp": "/stock-app/static/media/amd.548240a8b16d1363660a.webp",
     "static/media/revicons.woff": "/stock-app/static/media/revicons.e8746a624ed098489406.woff",
     "index.html": "/stock-app/index.html",
-    "main.8036cb08.css.map": "/stock-app/static/css/main.8036cb08.css.map",
-    "main.748af008.js.map": "/stock-app/static/js/main.748af008.js.map"
+    "main.30c171ca.css.map": "/stock-app/static/css/main.30c171ca.css.map",
+    "main.f559ebc1.js.map": "/stock-app/static/js/main.f559ebc1.js.map"
   },
   "entrypoints": [
-    "static/css/main.8036cb08.css",
-    "static/js/main.748af008.js"
+    "static/css/main.30c171ca.css",
+    "static/js/main.f559ebc1.js"
   ]
 }
