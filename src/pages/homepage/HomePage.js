@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router'
 import { StockContext } from '../../hooks/StockContext'
 
@@ -113,6 +113,8 @@ const HomePage = () => {
       setFaqVisible(faqVisible === idx ? null : idx)
    }
 
+
+ 
 
    const handleData = async() =>{
       const response = await fetch(`https://api.twelvedata.com/time_series?symbol=AAPL,MSFT,TSLA,META,AMZN&interval=1day&apikey=fc8e2d7c7326415a8e316a8d6a6e853d`)

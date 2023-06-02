@@ -2,7 +2,7 @@
 @import '../../style/colors.scss';
 
 .lost_container{
-    height: 70vh;
+    min-height: 70vh;
     background: $bgBlack;
     color: $white;
     display: flex;
@@ -13,7 +13,7 @@
 }
 
 .specific_container{
-    height: 70vh;
+    height: auto;
     background: $bgBlack;
     color: $white;
     width: 100%;
@@ -99,7 +99,7 @@
                     border-radius: 5px;
                     display: flex;
                     flex-direction: column;
-                    gap: 10px;
+                    gap: 20px;
 
                     .last_year_div{
                         background-color: $searchBorder;
@@ -122,12 +122,65 @@
                     }
                 }
             }
+
+            .stock_chart{
+                min-height: 400px;
+                margin-top: 60px;
+            }
         }
         .specific_right{
            flex: 0.8;
            background-color: $navBackground;
            border-radius: 5px;
             padding: 30px;
+
+            .stock_news_sec{
+                margin-top: 30px;
+
+                .news_container{
+                    margin-top: 20px;
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: space-between;
+                    gap: 20px;
+
+                    .news_box{
+                        width: 45%;
+
+                        .img_link{
+                            display: block;
+                            img{
+                                width: 150px;
+                                height: 80px;
+                                object-fit: cover;
+                            }
+                        }
+
+                        .news_title{
+                            text-decoration: none;
+                            display: block;
+                            margin: 5px 0;
+                            position: relative;
+                            color: $white;
+
+                            p{
+                               position: absolute;
+                               bottom: 100%;
+                               background-color: $navBackground;
+                               color: $white;
+                               display: none;
+                               border-radius: 5px;
+                               padding: 5px;
+                               border: 1px solid $white;
+                            }
+
+                            &:hover p{
+                                display: block;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

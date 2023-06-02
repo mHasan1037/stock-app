@@ -15,6 +15,7 @@ const ExchangeChart = ({candleStick, name}) => {
   ];
 
 
+
   candleStick.forEach((data, idx) =>{
     const{datetime, open, close, high, low} = data[1]
 

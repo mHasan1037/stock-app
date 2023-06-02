@@ -38,11 +38,10 @@ function App() {
 export default App;
 
 
-{
 
-  // https://crypto.com/ 
- 
+//https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=META&apikey=UNZLJ95Q4M3DQSMU
+  //https://api.twelvedata.com/time_series?symbol=AAPL&interval=1min&apikey=fc8e2d7c7326415a8e316a8d6a6e853d
+  //https://api.twelvedata.com/quote?symbol=${ticketData.toUpperCase()}&apikey=fc8e2d7c7326415a8e316a8d6a6e853d
+  //https://api.twelvedata.com/time_series?symbol=${ticketData.toUpperCase()}&interval=1day&apikey=fc8e2d7c7326415a8e316a8d6a6e853d
 
-  //symbol search
-  //https://api.twelvedata.com/symbol_search?symbol=FA
-}
+
