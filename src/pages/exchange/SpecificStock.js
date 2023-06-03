@@ -12,9 +12,19 @@ const SpecificStock = ({ticketData}) => {
   const [thirtyDayInfo, setThirtyDayInfo] = useState('')
   const [getTicket, setGetTicket] = useState(ticketData)
 
-  const [stockNews, setStockNews] = useState([])
-  const [newsPerPage, setNewsPerPage] = useState(10)
-  const [pageNo, setPageNo] = useState(1)
+  const [stockNews, setStockNews] = useState({})
+  const newsPerPage = 10
+  const [ pageStart, setPageStart] = useState(1)
+
+
+  //news pagination
+  const pages = []
+  for(let i = 1; i <= (stockNews && stockNews.feed ? (stockNews.feed.length) / 10 : 0); i++){
+      pages.push(i)
+  }
+
+  const lastIndex = newsPerPage * pageStart
+  const firstIndex = lastIndex - newsPerPage
  
   
   useEffect(()=>{
@@ -30,10 +40,11 @@ const SpecificStock = ({ticketData}) => {
       setThirtyDayInfo(data)
    }
 
+   // Getting news data for the side bar news section
    const getStockNews = async() =>{
       const res = await fetch(`https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=${getTicket.toUpperCase()}&apikey=UNZLJ95Q4M3DQSMU`);
       const data = await res.json()
-      setStockNews(data.feed)
+      setStockNews(data)
    }
 
     getStockTwo()
@@ -42,7 +53,6 @@ const SpecificStock = ({ticketData}) => {
   }, [getTicket])
 
 
-  console.log(stockNews)
 
   //getting ticket data from form
   const getTicketData = (ticket) =>{
@@ -53,11 +63,13 @@ const SpecificStock = ({ticketData}) => {
   let stockThirtyValues = thirtyDayInfo && thirtyDayInfo.values
 
 
+  //page will scrolled to the top after loading
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
 
 
+  //main page data starts from here.....
   if(currentInfo.status === 'error' || thirtyDayInfo.status === 'error'){
     return (
    <div className='lost_container'>
@@ -77,7 +89,7 @@ const SpecificStock = ({ticketData}) => {
             <div className='specific_left'>
                 <div className='spec_left_top'>
                     <div className='company_name'>
-                       <h2>{currentInfo.name}</h2>
+                       <h2>{currentInfo ? currentInfo.name : 'Name not found'}</h2>
                        <p style={{marginTop: '7px', display: 'flex', gap: '8px'}}>
                         {thirtyDayInfo && thirtyDayInfo.meta.exchange_timezone} 
                           <span style={currentInfo.is_market_open ? {color: 'green'} : {color: 'red'}}>
@@ -99,40 +111,40 @@ const SpecificStock = ({ticketData}) => {
                     <div className='stock_daily_info'>
                         <div className='stock_info_box'>
                             <p>Open</p>
-                            <h3>{currentInfo.open}</h3>
+                            <h3>{currentInfo ? currentInfo.open : 'Not found'}</h3>
                         </div>
                         <div className='stock_info_box'>
                             <p>High</p>
-                            <h3>{currentInfo.high}</h3>
+                            <h3>{currentInfo ? currentInfo.high : 'Not found'}</h3>
                         </div>
                         <div className='stock_info_box'>
                             <p>Volume</p>
-                            <h3>{currentInfo.volume}</h3>
+                            <h3>{currentInfo ? currentInfo.volume : 'Not found'}</h3>
                         </div>
                         <div className='stock_info_box'>
                             <p>Close</p>
-                            <h3>{currentInfo.close}</h3>
+                            <h3>{currentInfo ? currentInfo.close : 'Not found'}</h3>
                         </div>
                         <div className='stock_info_box'>
                             <p>Low</p>
-                            <h3>{currentInfo.low}</h3>
+                            <h3>{currentInfo ? currentInfo.low : 'Not found'}</h3>
                         </div>
                         <div className='stock_info_box'>
                             <p>Avg_volume</p>
-                            <h3>{currentInfo.average_volume}</h3>
+                            <h3>{currentInfo ? currentInfo.average_volume : 'Not found'}</h3>
                         </div>
                         <div className='stock_info_box'>
                             <p>Prev Close</p>
-                            <h3>{currentInfo.previous_close}</h3>
+                            <h3>{currentInfo ? currentInfo.previous_close : 'Not found'}</h3>
                         </div>
                         <div className='stock_info_box'>
                             <p>Change</p>
-                            <h3 style={currentInfo.change > 0 ? {color: 'green'} : {color: 'red'}}>{currentInfo.change}</h3>
+                            <h3 style={currentInfo && currentInfo.change > 0 ? {color: 'green'} : {color: 'red'}}>{currentInfo ? currentInfo.change : 'Not found'}</h3>
                         </div>
                         <div className='stock_info_box'>
                             <p>Per_change</p>
-                            <h3 style={currentInfo.percent_change > 0 ? {color: 'green'} : {color: 'red'}}>
-                                {parseFloat(currentInfo.percent_change).toFixed(2)}%
+                            <h3 style={currentInfo && currentInfo.percent_change > 0 ? {color: 'green'} : {color: 'red'}}>
+                                {parseFloat(currentInfo && currentInfo.percent_change).toFixed(2)}%
                             </h3>
                         </div>
                     </div>
@@ -168,10 +180,11 @@ const SpecificStock = ({ticketData}) => {
 
                    <div className='news_container'>
                    {
-                        stockNews && stockNews.length > 0 ? stockNews.slice(pageNo, newsPerPage).map((news, idx)=>{
+                        stockNews && stockNews.feed && stockNews.feed.length > 0 ? 
+                        stockNews.feed.slice(firstIndex, lastIndex).map((news, idx)=>{
                             const {banner_image, url, title} = news
                            return (
-                            <div className='news_box'>
+                            <div className='news_box' key={idx}>
                                 <a className="img_link" href={url} target='_blank'><img src={banner_image} /></a>
                                 <a href={url} className='news_title' target='_blank'>{title.length > 35 ? `${title.slice(0, 35)}...` : title}
                                   <p>{title}</p>
@@ -179,11 +192,15 @@ const SpecificStock = ({ticketData}) => {
                             </div>
                            )
                         }) :
-                        <h3>No news found</h3>
+                        <h3>No data found.</h3>
                     }
                    </div>
                    <div className='news_pagination'>
-                      
+                       {
+                        pages.map((page)=>(
+                            <button onClick={() => setPageStart(page)} key={page}>{page}</button>
+                        ))
+                       }
                    </div>
                 </div>
             </div>

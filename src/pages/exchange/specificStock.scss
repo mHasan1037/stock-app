@@ -180,6 +180,17 @@
                         }
                     }
                 }
+
+                .news_pagination{
+                    margin-top: 10px;
+
+                    button{
+                        margin-right: 5px;
+                        width: 30px;
+                        height: 30px;
+                        border: none;
+                    }
+                }
             }
         }
     }
