@@ -240,12 +240,16 @@
             justify-content: space-between;
             align-items: end;
 
-            h2{
-                @include breakpoint(sm){
-                    font-size: 15px;
-                }
-                @include breakpoint(xs){
-                    font-size: 15px;
+            button{
+                background-color: transparent;
+                color: $white;
+                border-radius: 5px;
+                padding: 15px;
+                cursor: pointer;
+
+                &:hover{
+                    background-color: $white;
+                    color: $navBackground;
                 }
             }
             

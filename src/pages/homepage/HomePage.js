@@ -113,11 +113,10 @@ const HomePage = () => {
       setFaqVisible(faqVisible === idx ? null : idx)
    }
 
-
  
 
    const handleData = async() =>{
-      const response = await fetch(`https://api.twelvedata.com/time_series?symbol=AAPL,MSFT,TSLA,META,AMZN&interval=1day&apikey=fc8e2d7c7326415a8e316a8d6a6e853d`)
+      const response = await fetch(`https://api.twelvedata.com/time_series?symbol=AAPL,MSFT,TSLA,META&interval=1day&apikey=f0f5fe1cc18341a0bf72a0ac68913bb6`)
       const jsonData = await response.json() 
       setCompanyTicket(jsonData)
       fetchStock(jsonData)
@@ -234,7 +233,7 @@ const HomePage = () => {
          }
         <section className='top-stock-Container'>
            <div className='top-stock-header'>
-              <h2 onClick={handleData}>Current Market</h2>
+              <button onClick={handleData}>Click to see Current Market data</button>
               <SearchBar />
            </div>
            <div className='top-stock-table'>

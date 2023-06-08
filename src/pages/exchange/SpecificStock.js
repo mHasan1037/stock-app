@@ -59,6 +59,8 @@ const SpecificStock = ({ticketData}) => {
     setGetTicket(ticket)
   }
 
+
+
   //chart data passed to chart component
   let stockThirtyValues = thirtyDayInfo && thirtyDayInfo.values
 
@@ -173,7 +175,7 @@ const SpecificStock = ({ticketData}) => {
                 </div>
             </div>
             <div className='specific_right'>
-                <SearchBar />
+                <SearchBar  />
                 
                 <div className='stock_news_sec'>
                     <h2 style={{textDecoration: 'underline'}}>Market news</h2>
